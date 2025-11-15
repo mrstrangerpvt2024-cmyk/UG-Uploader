@@ -711,7 +711,8 @@ async def txt_handler(bot: Client, m: Message):
             link0 = "https://" + Vxy
 
             name1 = links[i][0].replace("(", "[").replace(")", "]").replace("_", "").replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
-    # --- Auto Topic Extract ---
+ 
+# --- Auto Topic Extract ---
     raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
     topic_match = re.search(r"\((.*?)\)", raw_title)
     if topic_match:
@@ -849,23 +850,11 @@ async def txt_handler(bot: Client, m: Message):
 
             try:
                 cc = (
-    f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}
-
-"
-    f"<b>🎞️ Tɪᴛʟᴇ :</b> {clean_title}
-
-"
-    f"<b>📘 Tᴏᴘɪᴄ :</b> {topic_text}
-
-"
-    f"<blockquote>📚 𝗕ᴀᴛᴄʜ : {b_name}</blockquote>
-
-"
+    f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}"
+    f"<b>🎞️ Tɪᴛʟᴇ :</b> {clean_title}"
+    f"<b>📘 Tᴏᴘɪᴄ :</b> {topic_text}"
+    f"<blockquote>📚 𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
     f"<b>🎓 Uᴘʟᴏᴀᴅ Bʏ :</b> {CR}"
-).zfill(3)}\n\n"
-    f"<b>🎞️  Tɪᴛʟᴇ :</b> {name1} \n\n"
-    f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
-    f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
 )
                 cc1 = (
     f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
