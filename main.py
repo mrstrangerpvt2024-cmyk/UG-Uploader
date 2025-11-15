@@ -715,7 +715,7 @@ async def txt_handler(bot: Client, m: Message):
             if "||" in raw_title:
                 parts = raw_title.split("||", 1)
                 topic_text = parts[0].strip()
-                clean_title = parts[1].strip(
+                clean_title = parts[1].strip()
             # (B) Detect topic from ( )  →  Example: Pressure (दाब)
             elif re.search(r"\((.*?)\)", raw_title):
                 topic_match = re.search(r"\((.*?)\)", raw_title)
@@ -1410,4 +1410,5 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
