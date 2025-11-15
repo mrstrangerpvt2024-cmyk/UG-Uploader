@@ -710,20 +710,30 @@ async def txt_handler(bot: Client, m: Message):
             url = "https://" + Vxy
             link0 = "https://" + Vxy
 
-            name1 = links[i][0].replace("(", "[").replace(")", "]").replace("_", "").replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
-
-            # --- Auto Topic Extract ---
             raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
-            topic_match = re.search(r"\[(.*?)\]", raw_title)
 
-            if topic_match:
-                topic_text = topic_match.group(1).strip()
-                clean_title = re.sub(r"\[.*?\]", "", raw_title).strip()
-            else:
-                topic_text = "Unknown"
-                clean_title = raw_title
-                # Caption title me clean_title use hoga
-                name = clean_title[:60]
+# (A) Detect topic from ||   →  Example: Physics || Laws
+if "||" in raw_title:
+    parts = raw_title.split("||", 1)
+    topic_text = parts[0].strip()
+    clean_title = parts[1].strip()
+
+# (B) Detect topic from ( )  →  Example: Pressure (दाब)
+elif re.search(r"\((.*?)\)", raw_title):
+    topic_match = re.search(r"\((.*?)\)", raw_title)
+    topic_text = topic_match.group(1).strip()
+    clean_title = re.sub(r"\(.*?\)", "", raw_title).strip()
+
+# (C) Detect topic from [ ]  → Example: Physics [Basics]
+elif re.search(r"\[(.*?)\]", raw_title):
+    topic_match = re.search(r"\[(.*?)\]", raw_title)
+    topic_text = topic_match.group(1).strip()
+    clean_title = re.sub(r"\[.*?\]", "", raw_title).strip()
+
+# Default (no topic format)
+else:
+    topic_text = "Unknown"
+    clean_title = raw_title
             
             if "visionias" in url:
                 async with ClientSession() as session:
@@ -848,11 +858,10 @@ async def txt_handler(bot: Client, m: Message):
 
             try:
                 cc = (
-    f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}"
-    f"<b>🎞️ Tɪᴛʟᴇ :</b> {clean_title}"
-    f"<b>📘 Tᴏᴘɪᴄ :</b> {topic_text}"
-    f"<blockquote>📚 𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
-    f"<b>🎓 Uᴘʟᴏᴀᴅ Bʏ :</b> {CR}"
+    f"<b>🏷️ Iɴᴅᴇx ID  :</b> {str(count).zfill(3)}\n\n"
+    f"<b>🎞️  Tɪᴛʟᴇ :</b> {name1} \n\n"
+    f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
+    f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
 )
                 cc1 = (
     f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
@@ -1402,5 +1411,3 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
-
-
