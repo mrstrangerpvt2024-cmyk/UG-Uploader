@@ -711,10 +711,11 @@ async def txt_handler(bot: Client, m: Message):
             link0 = "https://" + Vxy
 
             name1 = links[i][0].replace("(", "[").replace(")", "]").replace("_", "").replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
- 
-# --- Auto Topic Extract ---
+
+    # --- Auto Topic Extract ---
     raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
     topic_match = re.search(r"\((.*?)\)", raw_title)
+
     if topic_match:
         topic_text = topic_match.group(1).strip()
         clean_title = re.sub(r"\(.*?\)", "", raw_title).strip()
@@ -722,10 +723,8 @@ async def txt_handler(bot: Client, m: Message):
         topic_text = "Unknown"
         clean_title = raw_title
 
-            if "," in raw_text3:
-                 name = f'{PRENAME} {name1[:60]}'
-            else:
-                 name = f'{name1[:60]}'
+    # Caption title me clean_title use hoga
+    name = clean_title[:60]
             
             if "visionias" in url:
                 async with ClientSession() as session:
