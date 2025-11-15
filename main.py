@@ -722,9 +722,8 @@ async def txt_handler(bot: Client, m: Message):
             else:
                 topic_text = "Unknown"
                 clean_title = raw_title
-
-# Caption title me clean_title use hoga
-    name = clean_title[:60]
+                # Caption title me clean_title use hoga
+                name = clean_title[:60]
             
             if "visionias" in url:
                 async with ClientSession() as session:
@@ -1403,4 +1402,5 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
