@@ -712,18 +712,18 @@ async def txt_handler(bot: Client, m: Message):
 
             name1 = links[i][0].replace("(", "[").replace(")", "]").replace("_", "").replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
 
-    # --- Auto Topic Extract ---
-    raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
-    topic_match = re.search(r"\((.*?)\)", raw_title)
+            # --- Auto Topic Extract ---
+            raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
+            topic_match = re.search(r"\[(.*?)\]", raw_title)
 
-    if topic_match:
-        topic_text = topic_match.group(1).strip()
-        clean_title = re.sub(r"\(.*?\)", "", raw_title).strip()
-    else:
-        topic_text = "Unknown"
-        clean_title = raw_title
+            if topic_match:
+                topic_text = topic_match.group(1).strip()
+                clean_title = re.sub(r"\[.*?\]", "", raw_title).strip()
+            else:
+                topic_text = "Unknown"
+                clean_title = raw_title
 
-    # Caption title me clean_title use hoga
+# Caption title me clean_title use hoga
     name = clean_title[:60]
             
             if "visionias" in url:
@@ -1403,3 +1403,4 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
