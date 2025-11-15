@@ -712,26 +712,38 @@ async def txt_handler(bot: Client, m: Message):
             
             name1 = links[i][0].replace("(", "[").replace(")", "]").replace("_", "").replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
             raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
-            # (A) Detect topic from ||   →  Example: Physics || Laws
-            if "||" in raw_title:
-                parts = raw_title.split("||", 1)
-                topic_text = parts[0].strip()
-                clean_title = parts[1].strip()
-            # (B) Detect topic from ( )  →  Example: Pressure (दाब)
-            elif re.search(r"\((.*?)\)", raw_title):
-                topic_match = re.search(r"\((.*?)\)", raw_title)
-                topic_text = topic_match.group(1).strip()
-                clean_title = re.sub(r"\(.*?\)", "", raw_title).strip()
-            # (C) Detect topic from [ ]  → Example: Physics [Basics]
-            elif re.search(r"\[(.*?)\]", raw_title):
-                topic_match = re.search(r"\[(.*?)\]", raw_title)
-                topic_text = topic_match.group(1).strip()
-                clean_title = re.sub(r"\[.*?\]", "", raw_title).strip()
+            # --- UNIVERSAL TOPIC & TITLE EXTRACTION ---
 
-            # Default (no topic format)
-            else:
-                topic_text = "Unknown"
-                clean_title = raw_title
+raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
+
+topic_text = "Unknown"
+clean_title = raw_title
+
+# 1) PRIORITY: "||" SPLIT (User’s custom format)
+if "||" in raw_title:
+    parts = raw_title.split("||", 1)
+    topic_text = parts[0].strip()
+    clean_title = parts[1].strip()
+
+else:
+    # 2) Check for (Topic)
+    import re
+    round_match = re.search(r"\((.*?)\)", raw_title)
+
+    if round_match:
+        topic_text = round_match.group(1).strip()
+        clean_title = re.sub(r"\(.*?\)", "", raw_title).strip()
+    else:
+        # 3) Check for [Topic]
+        square_match = re.search(r"\[(.*?)\]", raw_title)
+
+        if square_match:
+            topic_text = square_match.group(1).strip()
+            clean_title = re.sub(r"\[.*?\]", "", raw_title).strip()
+        else:
+            # Otherwise no topic found
+            topic_text = "Unknown"
+            clean_title = raw_title.strip()
             
             if "visionias" in url:
                 async with ClientSession() as session:
@@ -1411,6 +1423,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
