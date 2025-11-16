@@ -894,10 +894,11 @@ async def txt_handler(bot: Client, m: Message):
                         copy = await bot.send_document(chat_id=channel_id,document=ka, caption=cc1)
                         count+=1
                         os.remove(ka)
-                    except FloodWait as e:
-                        await m.reply_text(str(e))
-                        time.sleep(e.x)
-                        continue
+                    except FloodWait as e
+                    await m.reply_text(str(e))
+                    time.sleep(e.x)
+                    continue   # ✔ loop के अंदर
+                
                 elif ".pdf" in url:
                     if "cwmediabkt99" in url:
                         max_retries = 3  # Define the maximum number of retries
@@ -1419,6 +1420,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
