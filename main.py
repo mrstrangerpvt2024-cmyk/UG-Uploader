@@ -712,10 +712,10 @@ async def txt_handler(bot: Client, m: Message):
 
         # --- Topic & Title Extraction (LEFT = Topic, RIGHT = Title) ---
             raw_titke = name1.strip().replace("\n", " ").replace(" ", " ")
-
-    if "||" in raw_title:
-        parts = raw_title.split("||", 1)
-
+            
+            if "||" in raw_title:
+                parts = raw_title.split("||", 1)
+                
         #LEFT SIDE = TOPIC
         topic_text = parts[1].strip()
 
@@ -1419,6 +1419,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
