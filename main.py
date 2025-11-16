@@ -706,28 +706,24 @@ async def txt_handler(bot: Client, m: Message):
     arg = int(raw_text)
     try:
         for i in range(arg-1, len(links)):
-            Vxy = links[i][1].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","")
-            url = "https://" + Vxy
-            link0 = "https://" + Vxy
+            # ... loop content ...
             
-            name1 = links[i][0].replace("(", "[").replace(")", "]").replace("_", "").replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
-            raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
             # --- Topic & Title Extraction (LEFT = Topic, RIGHT = Title) ---
-            raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
-        if "||" in raw_title:
-            parts = raw_title.split("||", 1)
-                
-            # LEFT SIDE = TOPIC
-            topic_text = parts[0].strip()
+            raw_titke = name1.strip().replace("\n", " ").replace(" ", " ")
 
-            # RIGHT SIDE = TITLE
-            clean_title = parts[1].strip()
+    if "||" in raw_title:
+        parts = raw_title.split("||", 1)
 
-            else:
-                # If no "||", fallback to normal title
-                topic_text = "Unknown"
-                clean_title = raw_title
-            # (B) Detect topic from ( )  →  Example: Pressure (दाब)
+        #LEFT SIDE = TOPIC
+        topic_text = parts[1].strip()
+
+        #RIGHT SIDE = TITLE
+        clean_title = name1 strip()
+
+    else:
+        topic_text = "Unknown"
+        clean_title = raw_title
+        # (B) Detect topic from ( )  →  Example: Pressure (दाब)
             elif re.search(r"\((.*?)\)", raw_title):
                 topic_match = re.search(r"\((.*?)\)", raw_title)
                 topic_text = topic_match.group(1).strip()
@@ -1421,6 +1417,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
