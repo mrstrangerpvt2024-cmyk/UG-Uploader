@@ -712,8 +712,6 @@ async def txt_handler(bot: Client, m: Message):
             
             name1 = links[i][0].replace("(", "[").replace(")", "]").replace("_", "").replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
             raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
-            # --- Topic & Title Extraction (LEFT = Topic, RIGHT = Title) ---
-raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
 
 if "||" in raw_title:
     parts = raw_title.split("||", 1)
@@ -1411,6 +1409,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
