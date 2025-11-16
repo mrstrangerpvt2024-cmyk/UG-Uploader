@@ -888,13 +888,14 @@ async def txt_handler(bot: Client, m: Message):
                     try:
                         ka = await helper.download(url, name)
                         copy = await bot.send_document(chat_id=channel_id,document=ka, caption=cc1)
-                        count+=1
+                        count += 1
                         os.remove(ka)
                     except FloodWait as e:
                         await m.reply_text(str(e))
                         time.sleep(e.x)
-                        
-                        continue
+                        # FIX: Ensure 'continue' is aligned with 'await m.reply_text' and 'time.sleep'
+                        # while still being inside the loop's block.
+                        continue # This tells the loop to immediately start the next iteration.
                 
                 elif ".pdf" in url:
                     if "cwmediabkt99" in url:
@@ -1417,6 +1418,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
