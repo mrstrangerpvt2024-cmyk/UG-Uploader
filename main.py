@@ -711,29 +711,32 @@ async def txt_handler(bot: Client, m: Message):
             link0 = "https://" + Vxy
 
         # --- Topic & Title Extraction (LEFT = Topic, RIGHT = Title) ---
-            raw_titke = name1.strip().replace("\n", " ").replace(" ", " ")
+        raw_titke = name1.strip().replace("\n", " ").replace(" ", " ")
             
-            if "||" in raw_title:
-                parts = raw_title.split("||", 1)
-                #LEFT SIDE = TOPIC
+        if "||" in raw_title:
+            parts = raw_title.split("||", 1)
+            
+            #LEFT SIDE = TOPIC
             topic_text = parts[1].strip()
-                #RIGHT SIDE = TITLE
+            
+            #RIGHT SIDE = TITLE
             clean_title = name1.strip()
+        
         # (B) Detect topic from ( )  →  Example: Pressure (दाब)
-            elif re.search(r"\((.*?)\)", raw_title):
-                topic_match = re.search(r"\((.*?)\)", raw_title)
-                topic_text = topic_match.group(1).strip()
-                clean_title = re.sub(r"\(.*?\)", "", raw_title).strip()
-            # (C) Detect topic from [ ]  → Example: Physics [Basics]
-            elif re.search(r"\[(.*?)\]", raw_title):
-                topic_match = re.search(r"\[(.*?)\]", raw_title)
-                topic_text = topic_match.group(1).strip()
-                clean_title = re.sub(r"\[.*?\]", "", raw_title).strip()
+        elif re.search(r"\((.*?)\)", raw_title):
+            topic_match = re.search(r"\((.*?)\)", raw_title)
+            topic_text = topic_match.group(1).strip()
+            clean_title = re.sub(r"\(.*?\)", "", raw_title).strip()
+        # (C) Detect topic from [ ]  → Example: Physics [Basics]
+        elif re.search(r"\[(.*?)\]", raw_title):
+            topic_match = re.search(r"\[(.*?)\]", raw_title)
+            topic_text = topic_match.group(1).strip()
+            clean_title = re.sub(r"\[.*?\]", "", raw_title).strip()
 
-            # Default (no topic format)
-            else:
-                topic_text = "Unknown"
-                clean_title = raw_title
+        # Default (no topic format)
+        else:
+            topic_text = "Unknown"
+            clean_title = raw_title
             
             if "visionias" in url:
                 async with ClientSession() as session:
@@ -1413,6 +1416,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
