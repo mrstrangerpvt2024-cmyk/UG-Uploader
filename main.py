@@ -710,9 +710,7 @@ async def txt_handler(bot: Client, m: Message):
             url = "https://" + Vxy
             link0 = "https:// + Vxy
 
-        # ... loop content ...
-            
-            # --- Topic & Title Extraction (LEFT = Topic, RIGHT = Title) ---
+        # --- Topic & Title Extraction (LEFT = Topic, RIGHT = Title) ---
             raw_titke = name1.strip().replace("\n", " ").replace(" ", " ")
 
     if "||" in raw_title:
@@ -1421,6 +1419,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
