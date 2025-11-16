@@ -711,6 +711,8 @@ async def txt_handler(bot: Client, m: Message):
             link0 = "https://" + Vxy
             
             name1 = links[i][0].replace("(", "[").replace(")", "]").replace("_", "").replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
+            
+            # --- Topic & Title Extraction (LEFT = Topic, RIGHT = Title) ---
             raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
 
 if "||" in raw_title:
@@ -1409,6 +1411,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
