@@ -855,96 +855,112 @@ async def txt_handler(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:
-                cc = (
-    f"<blockquote><b>{topic_text}</b></blockquote>\n\n"
-    f"<b>🏷️ Iɴᴅᴇx ID  :</b> {str(count).zfill(3)}\n\n"
-    f"<b>🎞️  Tɪᴛʟᴇ :</b> {name1} \n\n"
-    f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
-    f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
-)
-                cc1 = (
-    f"<blockquote><b>{topic_text}</b></blockquote>\n\n"
-    f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
-    f"<b>📑  Tɪᴛʟᴇ :</b> {name1} \n\n"
-    f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
-    f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
-)
-                cczip = f'[📁]Zip Id : {str(count).zfill(3)}\n**Zip Title :** `{name1} .zip`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n' 
-                ccimg = (
-    f"<b>🏷️ Iɴᴅᴇx ID <b>: {str(count).zfill(3)} \n\n"
-    f"<b>🖼️  Tɪᴛʟᴇ</b> : {name1} \n\n"
-    f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
-    f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
-)
-                ccm = f'[🎵]Audio Id : {str(count).zfill(3)}\n**Audio Title :** `{name1} .mp3`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n'
-                cchtml = f'[🌐]Html Id : {str(count).zfill(3)}\n**Html Title :** `{name1} .html`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n'
-            else:
-# ===========================
-#  DOWNLOAD LOGIC STARTS HERE
-# ==========================
-if "drive" in url:
-    try:
-        ka = await helper.download(url, name)
-        copy = await bot.send_document(
-            chat_id=channel_id,
-            document=ka,
-            caption=cc1
-        )
-        count += 1
-        os.remove(ka)
 
-except FloodWait as e:
-await m.reply_text(str(e))
-time.sleep(e.x)
-continue   # ✔ CORRECT → inside the loop
+    # =============================
+    #  CAPTIONS
+    # =============================
+    cc = (
+        f"<blockquote><b>{topic_text}</b></blockquote>\n\n"
+        f"<b>🏷️ Iɴᴅᴇx ID  :</b> {str(count).zfill(3)}\n\n"
+        f"<b>🎞️  Tɪᴛʟᴇ :</b> {name1} \n\n"
+        f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
+        f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
+    )
+
+    cc1 = (
+        f"<blockquote><b>{topic_text}</b></blockquote>\n\n"
+        f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
+        f"<b>📑  Tɪᴛʟᴇ :</b> {name1} \n\n"
+        f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
+        f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
+    )
+
+    cczip = (
+        f"[📁]Zip Id : {str(count).zfill(3)}\n"
+        f"**Zip Title :** `{name1}.zip`\n"
+        f"<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n"
+        f"**Extracted by➤** {CR}\n"
+    )
+
+    ccimg = (
+        f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
+        f"<b>🖼️ Tɪᴛʟᴇ :</b> {name1}\n\n"
+        f"<blockquote>📚 𝗕ᴀᴛᴄʜ : {b_name}</blockquote>\n\n"
+        f"<b>🎓 Uᴘʟᴏᴀᴅ Bʏ :</b> {CR}"
+    )
+
+    ccm = (
+        f"[🎵]Audio Id : {str(count).zfill(3)}\n"
+        f"**Audio Title :** `{name1}.mp3`\n"
+        f"<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n"
+        f"**Extracted by➤** {CR}\n"
+    )
+
+    cchtml = (
+        f"[🌐]Html Id : {str(count).zfill(3)}\n"
+        f"**Html Title :** `{name1}.html`\n"
+        f"<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n"
+        f"**Extracted by➤** {CR}\n"
+    )
 
 
-elif ".pdf" in url:
+    # =============================
+    #  DOWNLOAD LOGIC STARTS HERE
+    # =============================
 
-    if "cwmediabkt99" in url:
-        max_retries = 3
-        retry_delay = 4
-        success = False
-        failure_msgs = []
+    if "drive" in url:
+        try:
+            ka = await helper.download(url, name)
+            copy = await bot.send_document(chat_id=channel_id, document=ka, caption=cc1)
+            count += 1
+            os.remove(ka)
+        except FloodWait as e:
+            await m.reply_text(str(e))
+            time.sleep(e.x)
+            continue
 
-        for attempt in range(max_retries):
-            try:
-                await asyncio.sleep(retry_delay)
-                url = url.replace(" ", "%20")
-                scraper = cloudscraper.create_scraper()
-                response = scraper.get(url)
+    elif ".pdf" in url:
 
-                if response.status_code == 200:
-                    with open(f"{name}.pdf", "wb") as file:
-                        file.write(response.content)
+        if "cwmediabkt99" in url:
+            max_retries = 3
+            retry_delay = 4
+            failure_msgs = []
 
+            for attempt in range(max_retries):
+                try:
                     await asyncio.sleep(retry_delay)
-                    copy = await bot.send_document(
-                        chat_id=channel_id,
-                        document=f"{name}.pdf",
-                        caption=cc1
+                    url = url.replace(" ", "%20")
+                    scraper = cloudscraper.create_scraper()
+                    response = scraper.get(url)
+
+                    if response.status_code == 200:
+                        with open(f"{name}.pdf", "wb") as file:
+                            file.write(response.content)
+
+                        await asyncio.sleep(retry_delay)
+                        copy = await bot.send_document(
+                            chat_id=channel_id, document=f"{name}.pdf", caption=cc1
+                        )
+                        count += 1
+                        os.remove(f"{name}.pdf")
+                        break
+
+                    else:
+                        msg = await m.reply_text(
+                            f"Attempt {attempt+1}/{max_retries} failed: {response.status_code}"
+                        )
+                        failure_msgs.append(msg)
+
+                except Exception as e:
+                    msg = await m.reply_text(
+                        f"Attempt {attempt+1}/{max_retries} failed: {e}"
                     )
-                    count += 1
-                    os.remove(f"{name}.pdf")
-                    success = True
-                    break
+                    failure_msgs.append(msg)
+                    await asyncio.sleep(retry_delay)
+                    continue
 
-                else:
-                    failure_msg = await m.reply_text(
-                        f"Attempt {attempt+1}/{max_retries} failed: {response.status_code}"
-                    )
-                    failure_msgs.append(failure_msg)
-
-            except Exception as e:
-                failure_msg = await m.reply_text(
-                    f"Attempt {attempt+1}/{max_retries} failed: {e}"
-                )
-                failure_msgs.append(failure_msg)
-                await asyncio.sleep(retry_delay)
-                continue  # ✔ valid — INSIDE LOOP
-
-        for msg in failure_msgs:
-            await msg.delete()
+            for msg in failure_msgs:
+                await msg.delete()
 
     else:
         try:
@@ -1400,6 +1416,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
