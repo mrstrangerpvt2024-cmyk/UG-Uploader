@@ -712,35 +712,37 @@ async def txt_handler(bot: Client, m: Message):
             
             name1 = links[i][0].replace("(", "[").replace(")", "]").replace("_", "").replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
             raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
-            # --- UNIVERSAL TOPIC & TITLE EXTRACTION ---
+            # --- Topic & Title Extraction (LEFT = Topic, RIGHT = Title) ---
+raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
 
-            raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
-            topic_text = "Unknown"
-            clean_title = raw_title
+if "||" in raw_title:
+    parts = raw_title.split("||", 1)
 
-            # 1) PRIORITY: "||" SPLIT (User’s custom format)
-        if "||" in raw_title:
-            parts = raw_title.split("||", 1)
-            topic_text = parts[0].strip()
-            clean_title = parts[1].strip()
-        
-        else:
-            # 2) Check for (Topic)
-            import re
-            round_match = re.search(r"\((.*?)\)", raw_title)
-            if round_match:
-                topic_text = round_match.group(1).strip()
+    # LEFT SIDE = TOPIC
+    topic_text = parts[0].strip()
+
+    # RIGHT SIDE = TITLE
+    clean_title = parts[1].strip()
+
+else:
+    # If no "||", fallback to normal title
+    topic_text = "Unknown"
+    clean_title = raw_title
+            # (B) Detect topic from ( )  →  Example: Pressure (दाब)
+            elif re.search(r"\((.*?)\)", raw_title):
+                topic_match = re.search(r"\((.*?)\)", raw_title)
+                topic_text = topic_match.group(1).strip()
                 clean_title = re.sub(r"\(.*?\)", "", raw_title).strip()
+            # (C) Detect topic from [ ]  → Example: Physics [Basics]
+            elif re.search(r"\[(.*?)\]", raw_title):
+                topic_match = re.search(r"\[(.*?)\]", raw_title)
+                topic_text = topic_match.group(1).strip()
+                clean_title = re.sub(r"\[.*?\]", "", raw_title).strip()
+
+            # Default (no topic format)
             else:
-                # 3) Check for [Topic]
-                square_match = re.search(r"\[(.*?)\]", raw_title)
-                if square_match:
-                    topic_text = square_match.group(1).strip()
-                    clean_title = re.sub(r"\[.*?\]", "", raw_title).strip()
-                else:
-                # Otherwise no topic found
-                    topic_text = "Unknown"
-                    clean_title = raw_title.strip()
+                topic_text = "Unknown"
+                clean_title = raw_title
             
             if "visionias" in url:
                 async with ClientSession() as session:
@@ -894,12 +896,11 @@ async def txt_handler(bot: Client, m: Message):
                         copy = await bot.send_document(chat_id=channel_id,document=ka, caption=cc1)
                         count+=1
                         os.remove(ka)
-                    except FloodWait as e
-                    
-                    await m.reply_text(str(e))
-                    time.sleep(e.x)
-                    continue   # ✔ loop के अंदर
-                
+                    except FloodWait as e:
+                        await m.reply_text(str(e))
+                        time.sleep(e.x)
+                        continue    
+  
                 elif ".pdf" in url:
                     if "cwmediabkt99" in url:
                         max_retries = 3  # Define the maximum number of retries
@@ -1421,12 +1422,6 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
-
-
-
-
-
-
 
 
 
