@@ -893,6 +893,8 @@ async def txt_handler(bot: Client, m: Message):
                     except FloodWait as e:
                         await m.reply_text(str(e))
                         time.sleep(e.x)
+                        
+                        continue
                 
                 elif ".pdf" in url:
                     if "cwmediabkt99" in url:
@@ -1415,6 +1417,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
