@@ -720,7 +720,7 @@ async def txt_handler(bot: Client, m: Message):
         topic_text = parts[1].strip()
 
         #RIGHT SIDE = TITLE
-        clean_title = name1 strip()
+        clean_title = name1.strip()
 
     else:
         topic_text = "Unknown"
@@ -1419,6 +1419,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
