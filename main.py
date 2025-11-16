@@ -855,47 +855,42 @@ async def txt_handler(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:
-    # ------------------------
-    # CAPTIONS START
-    # ------------------------
-    cc = (
-        f"<blockquote><b>{topic_text}</b></blockquote>\n\n"
-        f"<b>🏷️ Iɴᴅᴇx ID  :</b> {str(count).zfill(3)}\n\n"
-        f"<b>🎞️  Tɪᴛʟᴇ :</b> {name1} \n\n"
-        f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
-        f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
-    )
-
-    cc1 = (
-        f"<blockquote><b>{topic_text}</b></blockquote>\n\n"
-        f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
-        f"<b>📑  Tɪᴛʟᴇ :</b> {name1} \n\n"
-        f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
-        f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
-    )
-
-    ccimg = (
-        f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
-        f"<b>🖼️ Tɪᴛʟᴇ :</b> {name1}\n\n"
-        f"<blockquote>📚 𝗕ᴀᴛᴄʜ : {b_name}</blockquote>\n\n"
-        f"<b>🎓 Uᴘʟᴏᴀᴅ Bʏ :</b> {CR}"
-    )
-
-    ccm = (
-        f"[🎵]Audio Id : {str(count).zfill(3)}\n"
-        f"**Audio Title :** `{name1}.mp3`\n"
-        f"<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n"
-        f"**Extracted by➤** {CR}\n"
-    )
-
-    cchtml = (
-        f"[🌐]Html Id : {str(count).zfill(3)}\n"
-        f"**Html Title :** `{name1}.html`\n"
-        f"<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n"
-        f"**Extracted by➤** {CR}\n"
-    )
-
-
+                # ------------------------
+                # CAPTIONS START
+                # ------------------------
+                cc = (
+                    f"<blockquote><b>{topic_text}</b></blockquote>\n\n"
+                    f"<b>🏷️ Iɴᴅᴇx ID  :</b> {str(count).zfill(3)}\n\n"
+                    f"<b>🎞️  Tɪᴛʟᴇ :</b> {name1} \n\n"
+                    f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
+                    f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
+                )
+                cc1 = (
+                    f"<blockquote><b>{topic_text}</b></blockquote>\n\n"
+                    f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
+                    f"<b>📑  Tɪᴛʟᴇ :</b> {name1} \n\n"
+                    f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
+                    f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
+                )
+                ccimg = (
+                    f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
+                    f"<b>🖼️ Tɪᴛʟᴇ :</b> {name1}\n\n"
+                    f"<blockquote>📚 𝗕ᴀᴛᴄʜ : {b_name}</blockquote>\n\n"
+                    f"<b>🎓 Uᴘʟᴏᴀᴅ Bʏ :</b> {CR}"
+                )
+                ccm = (
+                    f"[🎵]Audio Id : {str(count).zfill(3)}\n"
+                    f"**Audio Title :** `{name1}.mp3`\n"
+                    f"<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n"
+                    f"**Extracted by➤** {CR}\n"
+                )
+                cchtml = (
+                    f"[🌐]Html Id : {str(count).zfill(3)}\n"
+                    f"**Html Title :** `{name1}.html`\n"
+                    f"<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n"
+                    f"**Extracted by➤** {CR}\n"
+                )
+                
     # =============================
     #  DOWNLOAD LOGIC STARTS HERE
     # =============================
@@ -1408,6 +1403,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
