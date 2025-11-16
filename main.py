@@ -855,10 +855,9 @@ async def txt_handler(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:
-
-    # =============================
-    #  CAPTIONS
-    # =============================
+    # ------------------------
+    # CAPTIONS START
+    # ------------------------
     cc = (
         f"<blockquote><b>{topic_text}</b></blockquote>\n\n"
         f"<b>🏷️ Iɴᴅᴇx ID  :</b> {str(count).zfill(3)}\n\n"
@@ -873,13 +872,6 @@ async def txt_handler(bot: Client, m: Message):
         f"<b>📑  Tɪᴛʟᴇ :</b> {name1} \n\n"
         f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
         f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
-    )
-
-    cczip = (
-        f"[📁]Zip Id : {str(count).zfill(3)}\n"
-        f"**Zip Title :** `{name1}.zip`\n"
-        f"<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n"
-        f"**Extracted by➤** {CR}\n"
     )
 
     ccimg = (
@@ -1416,6 +1408,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
