@@ -708,7 +708,7 @@ async def txt_handler(bot: Client, m: Message):
         for i in range(arg-1, len(links)):
             Vxy = links[i][1].replace("file/d/","uc?export=download&id="). replace("www.youtube-nocookie.com/embed","youtu.be").replace("?modestbranding=1","").replace("/view?usp=sharing","")
             url = "https://" + Vxy
-            link0 = "https:// + Vxy
+            link0 = "https://" + Vxy
 
         # --- Topic & Title Extraction (LEFT = Topic, RIGHT = Title) ---
             raw_titke = name1.strip().replace("\n", " ").replace(" ", " ")
@@ -1419,6 +1419,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
