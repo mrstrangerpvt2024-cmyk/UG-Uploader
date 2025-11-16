@@ -889,11 +889,10 @@ else:
 )
                 ccm = f'[🎵]Audio Id : {str(count).zfill(3)}\n**Audio Title :** `{name1} .mp3`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n'
                 cchtml = f'[🌐]Html Id : {str(count).zfill(3)}\n**Html Title :** `{name1} .html`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n'
-
+                
 # ===========================
 #  DOWNLOAD LOGIC STARTS HERE
 # ===========================
-
 if "drive" in url:
     try:
         ka = await helper.download(url, name)
@@ -905,10 +904,10 @@ if "drive" in url:
         count += 1
         os.remove(ka)
 
-    except FloodWait as e:
-        await m.reply_text(str(e))
-        time.sleep(e.x)
-        continue   # ✔ CORRECT → inside the loop
+except FloodWait as e:
+await m.reply_text(str(e))
+time.sleep(e.x)
+continue   # ✔ CORRECT → inside the loop
 
 
 elif ".pdf" in url:
@@ -1412,6 +1411,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
