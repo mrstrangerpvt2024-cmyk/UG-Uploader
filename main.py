@@ -711,29 +711,24 @@ async def txt_handler(bot: Client, m: Message):
             link0 = "https://" + Vxy
             
             name1 = links[i][0].replace("(", "[").replace(")", "]").replace("_", "").replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
-            # --- Topic & Title Extraction (LEFT = Topic, RIGHT = Title) ---
+            # --- Auto Topic Extract ---
             raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
-            
+
             if "||" in raw_title:
-            parts = raw_title.split("||", 1)
-            
-            # LEFT SIDE = TOPIC
-            topic_text = parts[0].strip()
-            
-            # RIGHT SIDE = TITLE
-            clean_title = parts[1].strip()
-            # (B) Detect topic from ( )  →  Example: Pressure (दाब)
+                parts = raw_title.split("||", 1)
+                topic_text = parts[0].strip()
+                clean_title = parts[1].strip()
+
             elif re.search(r"\((.*?)\)", raw_title):
                 topic_match = re.search(r"\((.*?)\)", raw_title)
                 topic_text = topic_match.group(1).strip()
                 clean_title = re.sub(r"\(.*?\)", "", raw_title).strip()
-            # (C) Detect topic from [ ]  → Example: Physics [Basics]
+
             elif re.search(r"\[(.*?)\]", raw_title):
-                topic_match = re.search(r"\[(.*?)\]", raw_title)
+                topic_match = re.search(r"\[(.*?)\)", raw_title)
                 topic_text = topic_match.group(1).strip()
                 clean_title = re.sub(r"\[.*?\]", "", raw_title).strip()
 
-            # Default (no topic format)
             else:
                 topic_text = "Unknown"
                 clean_title = raw_title
@@ -1405,6 +1400,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
