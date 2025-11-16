@@ -895,6 +895,7 @@ async def txt_handler(bot: Client, m: Message):
                         count+=1
                         os.remove(ka)
                     except FloodWait as e
+                    
                     await m.reply_text(str(e))
                     time.sleep(e.x)
                     continue   # ✔ loop के अंदर
@@ -1420,6 +1421,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
