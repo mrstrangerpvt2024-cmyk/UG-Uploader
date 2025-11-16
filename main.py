@@ -715,19 +715,18 @@ async def txt_handler(bot: Client, m: Message):
             # --- Topic & Title Extraction (LEFT = Topic, RIGHT = Title) ---
             raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
 
-if "||" in raw_title:
-    parts = raw_title.split("||", 1)
-
-    # LEFT SIDE = TOPIC
-    topic_text = parts[0].strip()
-
-    # RIGHT SIDE = TITLE
-    clean_title = parts[1].strip()
-
-else:
-    # If no "||", fallback to normal title
-    topic_text = "Unknown"
-    clean_title = raw_title
+        if "||" in raw_title:
+            parts = raw_title.split("||", 1)
+            
+            # LEFT SIDE = TOPIC
+            topic_text = parts[0].strip()
+            
+            # RIGHT SIDE = TITLE
+            clean_title = parts[1].strip()
+    else:
+        # If no "||", fallback to normal title
+        topic_text = "Unknown"
+        clean_title = raw_title
             # (B) Detect topic from ( )  →  Example: Pressure (दाब)
             elif re.search(r"\((.*?)\)", raw_title):
                 topic_match = re.search(r"\((.*?)\)", raw_title)
@@ -1411,6 +1410,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
