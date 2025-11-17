@@ -856,7 +856,9 @@ async def txt_handler(bot: Client, m: Message):
 
             try:
                 cc = (
-    f"╭━━━━━━━━━━━╮\n🌟<blockquote><b>✨{topic_text}</b></blockquote>\n╰━━━━━━━━━━━╯\n"
+    f"╭━━━━━━━━━━━╮\n🌟"
+    f"<blockquote><b>✨{topic_text}</b></blockquote>\n
+    f"╰━━━━━━━━━━━╯\n"
     f"<b>🎥 VIDEO ID:</b>{str(count).zfill(3)}.\n\n"
     f"<b>📄 Title: {clean_title}</b> ({res}) ᴍʀꜱᴛʀᴀɴɢᴇʀ™.mkv\n\n"
     f"<b>🔖 Batch:</b> `{b_name}`\n\n"
@@ -1412,6 +1414,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
