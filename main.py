@@ -711,24 +711,24 @@ async def txt_handler(bot: Client, m: Message):
             link0 = "https://" + Vxy
             
             name1 = links[i][0].replace("(", "[").replace(")", "]").replace("_", "").replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
-            # --- Auto Topic Extract ---
             raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
-
+            # (A) Detect topic from ||   →  Example: Physics || Laws
             if "||" in raw_title:
                 parts = raw_title.split("||", 1)
                 topic_text = parts[0].strip()
                 clean_title = parts[1].strip()
-
+            # (B) Detect topic from ( )  →  Example: Pressure (दाब)
             elif re.search(r"\((.*?)\)", raw_title):
                 topic_match = re.search(r"\((.*?)\)", raw_title)
                 topic_text = topic_match.group(1).strip()
                 clean_title = re.sub(r"\(.*?\)", "", raw_title).strip()
-
+            # (C) Detect topic from [ ]  → Example: Physics [Basics]
             elif re.search(r"\[(.*?)\]", raw_title):
-                topic_match = re.search(r"\[(.*?)\)", raw_title)
+                topic_match = re.search(r"\[(.*?)\]", raw_title)
                 topic_text = topic_match.group(1).strip()
                 clean_title = re.sub(r"\[.*?\]", "", raw_title).strip()
 
+            # Default (no topic format)
             else:
                 topic_text = "Unknown"
                 clean_title = raw_title
@@ -855,41 +855,30 @@ async def txt_handler(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:
-                # ------------------------
-                # CAPTIONS START
-                # ------------------------
                 cc = (
-                    f"<blockquote><b>{topic_text}</b></blockquote>\n\n"
-                    f"<b>🏷️ Iɴᴅᴇx ID  :</b> {str(count).zfill(3)}\n\n"
-                    f"<b>🎞️  Tɪᴛʟᴇ :</b> {clean_title} \n\n"
-                    f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
-                    f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
-                )
+    f"<blockquote><b>{topic_text}</b></blockquote>\n\n"
+    f"<b>🏷️ Iɴᴅᴇx ID  :</b> {str(count).zfill(3)}\n\n"
+    f"<b>🎞️  Tɪᴛʟᴇ :</b> {name1} \n\n"
+    f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
+    f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
+)
                 cc1 = (
-                    f"<blockquote><b>{topic_text}</b></blockquote>\n\n"
-                    f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
-                    f"<b>📑  Tɪᴛʟᴇ :</b> {clean_title} \n\n"
-                    f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
-                    f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
-                )
+    f"<blockquote><b>{topic_text}</b></blockquote>\n\n"
+    f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
+    f"<b>📑  Tɪᴛʟᴇ :</b> {name1} \n\n"
+    f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
+    f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
+)
+                cczip = f'[📁]Zip Id : {str(count).zfill(3)}\n**Zip Title :** `{name1} .zip`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n' 
                 ccimg = (
-                    f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
-                    f"<b>🖼️ Tɪᴛʟᴇ :</b> {clean_title}\n\n"
-                    f"<blockquote>📚 𝗕ᴀᴛᴄʜ : {b_name}</blockquote>\n\n"
-                    f"<b>🎓 Uᴘʟᴏᴀᴅ Bʏ :</b> {CR}"
-                )
-                ccm = (
-                    f"[🎵]Audio Id : {str(count).zfill(3)}\n"
-                    f"**Audio Title :** `{clean_title}.mp3`\n"
-                    f"<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n"
-                    f"**Extracted by➤** {CR}\n"
-                )
-                cchtml = (
-                    f"[🌐]Html Id : {str(count).zfill(3)}\n"
-                    f"**Html Title :** `{clean_title}.html`\n"
-                    f"<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n"
-                    f"**Extracted by➤** {CR}\n")
-                
+    f"<b>🏷️ Iɴᴅᴇx ID <b>: {str(count).zfill(3)} \n\n"
+    f"<b>🖼️  Tɪᴛʟᴇ</b> : {name1} \n\n"
+    f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
+    f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
+)
+                ccm = f'[🎵]Audio Id : {str(count).zfill(3)}\n**Audio Title :** `{name1} .mp3`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n'
+                cchtml = f'[🌐]Html Id : {str(count).zfill(3)}\n**Html Title :** `{name1} .html`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n'
+                  
                 if "drive" in url:
                     try:
                         ka = await helper.download(url, name)
@@ -899,14 +888,14 @@ async def txt_handler(bot: Client, m: Message):
                     except FloodWait as e:
                         await m.reply_text(str(e))
                         time.sleep(e.x)
-                        continue
-                
+                        continue    
+  
                 elif ".pdf" in url:
                     if "cwmediabkt99" in url:
                         max_retries = 3  # Define the maximum number of retries
                         retry_delay = 4  # Delay between retries in seconds
                         success = False  # To track whether the download was successful
-                        failure_msgs = []  # To keep track of failure messages 
+                        failure_msgs = []  # To keep track of failure messages
                         
                         for attempt in range(max_retries):
                             try:
@@ -914,7 +903,7 @@ async def txt_handler(bot: Client, m: Message):
                                 url = url.replace(" ", "%20")
                                 scraper = cloudscraper.create_scraper()
                                 response = scraper.get(url)
-                                
+
                                 if response.status_code == 200:
                                     with open(f'{name}.pdf', 'wb') as file:
                                         file.write(response.content)
@@ -927,6 +916,7 @@ async def txt_handler(bot: Client, m: Message):
                                 else:
                                     failure_msg = await m.reply_text(f"Attempt {attempt + 1}/{max_retries} failed: {response.status_code} {response.reason}")
                                     failure_msgs.append(failure_msg)
+                                    
                             except Exception as e:
                                 failure_msg = await m.reply_text(f"Attempt {attempt + 1}/{max_retries} failed: {str(e)}")
                                 failure_msgs.append(failure_msg)
@@ -934,7 +924,7 @@ async def txt_handler(bot: Client, m: Message):
                                 continue 
                         for msg in failure_msgs:
                             await msg.delete()
-                    
+                            
                     else:
                         try:
                             cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
@@ -946,8 +936,8 @@ async def txt_handler(bot: Client, m: Message):
                         except FloodWait as e:
                             await m.reply_text(str(e))
                             time.sleep(e.x)
-                            continue
-                    
+                            continue    
+
                 elif ".ws" in url and  url.endswith(".ws"):
                     try:
                         await helper.pdf_download(f"{api_url}utkash-ws?url={url}&authorization={api_token}",f"{name}.html")
@@ -958,7 +948,8 @@ async def txt_handler(bot: Client, m: Message):
                     except FloodWait as e:
                         await m.reply_text(str(e))
                         time.sleep(e.x)
-                        continue
+                        continue    
+                            
                 elif any(ext in url for ext in [".jpg", ".jpeg", ".png"]):
                     try:
                         ext = url.split('.')[-1]
@@ -971,8 +962,8 @@ async def txt_handler(bot: Client, m: Message):
                     except FloodWait as e:
                         await m.reply_text(str(e))
                         time.sleep(e.x)
-                        continue
-                        
+                        continue    
+
                 elif any(ext in url for ext in [".mp3", ".wav", ".m4a"]):
                     try:
                         ext = url.split('.')[-1]
@@ -984,8 +975,8 @@ async def txt_handler(bot: Client, m: Message):
                     except FloodWait as e:
                         await m.reply_text(str(e))
                         time.sleep(e.x)
-                        continue
-                
+                        continue    
+                    
                 elif 'encrypted.m' in url:    
                     Show = f"<i><b>Video APPX Encrypted Downloading</b></i>\n<blockquote><b>{str(count).zfill(3)}) {name1}</b></blockquote>"
                     prog = await bot.send_message(channel_id, Show, disable_web_page_preview=True)
@@ -1420,25 +1411,6 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
