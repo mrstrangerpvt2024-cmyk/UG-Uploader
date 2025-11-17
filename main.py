@@ -860,7 +860,7 @@ async def txt_handler(bot: Client, m: Message):
 )
                 cc1 = (
     f"╭━━━━━━━━━━━╮\n<b>📁 FILE ID:</b> {str(count).zfill(3)}\n╰━━━━━━━━━━━╯\n"
-    f"<b>📄 Title:</b> {name1} \n\n"
+    f"<b>📄 Title: {name1}</b> ({res}) ᴍʀꜱᴛʀᴀɴɢᴇʀ™.mkv\n\n"
     f"<b>🔖 Batch:</b> `{b_name}`\n\n"
     f"<b>📥 Extracted By:</b> "
     f"<b><a href=\"https://t.me/delhipolice_yakeenbatch\">{CR}</a></b>"
@@ -868,7 +868,7 @@ async def txt_handler(bot: Client, m: Message):
                 cczip = f'╭━━━━━━━━━━━╮\n<b>📁 FILE ID:</b> {str(count).zfill(3)}\n╰━━━━━━━━━━━╯\n<b>📄 Title:</b> {clean_title} \n\n<b>🔖 Batch:</b> `{b_name}`\n\n"<b>📥 Extracted By:</b> {CR}' 
                 ccimg = (
     f"╭━━━━━━━━━━━╮\n<b>🖼️ IMAGE ID:</b> {str(count).zfill(3)}\n╰━━━━━━━━━━━╯\n"
-    f"<b>📄 Title:</b> {name1} \n\n"
+    f"<b>📄 Title:</b> {name1}</b> ({res}) ᴍʀꜱᴛʀᴀɴɢᴇʀ™.mkv\n\n"
     f"<b>🔖 Batch:</b> `{b_name}`\n\n"
     f"<b>📥 Extracted By:</b> "
     f"<b><a href=\"https://t.me/delhipolice_yakeenbatch\">{CR}</a><b>"
@@ -1408,6 +1408,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
