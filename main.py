@@ -890,15 +890,19 @@ async def txt_handler(bot: Client, m: Message):
                     f"<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n"
                     f"**Extracted by➤** {CR}\n"
                 )
-            except Exception as e:
-                    await m.reply_text(f"Caption error: {e}")
-                    continue
-                    
-    # =============================
-    #  DOWNLOAD LOGIC STARTS HERE
-    # =============================
+                
+# NOTE: YAHI PAR try block END HOTA HAI
+    
+    except Exception as e:
+        await m.reply_text(f"Caption error: {e}")
+        continue   # allowed, kyunki loop ke andar ho
+        
+# -----------------------------------------
+#  Try/Except YAHI CLOSE HUA
+# -----------------------------------------
 
-    if "drive" in url:
+# Ab safe hai:
+if "drive" in url:
         try:
             ka = await helper.download(url, name)
             copy = await bot.send_document(chat_id=channel_id, document=ka, caption=cc1)
@@ -1406,6 +1410,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
