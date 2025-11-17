@@ -714,7 +714,7 @@ async def txt_handler(bot: Client, m: Message):
             name1 = re.sub(r'http\S+', '', name1).strip()
             raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
             # (A) Detect topic from ( )  →  Example: Pressure (दाब)
-            elif re.search(r"\((.*?)\)", raw_title):
+            if re.search(r"\((.*?)\)", raw_title):
                 topic_match = re.search(r"\((.*?)\)", raw_title)
                 topic_text = topic_match.group(1).strip()
                 clean_title = re.sub(r"\(.*?\)", "", raw_title).strip()
@@ -1408,6 +1408,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
