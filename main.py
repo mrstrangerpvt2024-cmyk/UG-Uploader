@@ -711,6 +711,7 @@ async def txt_handler(bot: Client, m: Message):
             link0 = "https://" + Vxy
             
             name1 = links[i][0].replace("(", "[").replace(")", "]").replace("_", "").replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").strip()
+            name1 = re.sub(r'http\S+', '', name1).strip()
             raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
             # (A) Detect topic from ||   →  Example: Physics || Laws
             if "||" in raw_title:
@@ -1412,6 +1413,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
