@@ -856,22 +856,22 @@ async def txt_handler(bot: Client, m: Message):
 
             try:
                 cc = (
-    f"╭━━━━━━━━━━━╮\n🌟<blockquote><b>✨ {topic_text}</b></blockquote>\n╰━━━━━━━━━━━╯\n"
+    f"╭━━━━━━━━━━━╮\n🌟<blockquote><b>✨{topic_text}</b></blockquote>\n╰━━━━━━━━━━━╯\n"
     f"<b>🎥 VIDEO ID:</b>{str(count).zfill(3)}.\n\n"
     f"<b>📄 Title: {clean_title}</b> ({res}) ᴍʀꜱᴛʀᴀɴɢᴇʀ™.mkv\n\n"
     f"<b>🔖 Batch:</b> `{b_name}`\n\n"
     f"<b>📥 Extracted By:</b> {CR}"
 )
                 cc1 = (
-    f"╭━━━━━━━━━━━╮\n🌟<blockquote><b>✨ {topic_text}</b></blockquote>\n╰━━━━━━━━━━━╯\n"
+    f"╭━━━━━━━━━━━╮\n🌟<blockquote><b>✨{topic_text}</b></blockquote>\n╰━━━━━━━━━━━╯\n"
     f"<b>📑 FILE ID:</b> {str(count).zfill(3)}\n\n"
     f"<b>📄 Title:</b> {clean_title} \n\n"
     f"<b>🔖 Batch:</b> `{b_name}`\n\n"
     f"<b>📥 Extracted By:</b> {CR}"
 )
-                cczip = f'╭━━━━━━━━━━━╮\n<blockquote><b>✨ {topic_text}</b></blockquote>\n╰━━━━━━━━━━━╯\n<b>📑 FILE ID:</b> {str(count).zfill(3)}\n\n<b>📄 Title:</b> {clean_title} \n\n<b>🔖 Batch:</b> `{b_name}`\n\n"<b>📥 Extracted By:</b> {CR}' 
+                cczip = f'╭━━━━━━━━━━━╮\n<blockquote><b>✨{topic_text}</b></blockquote>\n╰━━━━━━━━━━━╯\n<b>📑 FILE ID:</b> {str(count).zfill(3)}\n\n<b>📄 Title:</b> {clean_title} \n\n<b>🔖 Batch:</b> `{b_name}`\n\n"<b>📥 Extracted By:</b> {CR}' 
                 ccimg = (
-    f"╭━━━━━━━━━━━╮\n🌟<blockquote><b>✨ {topic_text}</b></blockquote>\n╰━━━━━━━━━━━╯\n"
+    f"╭━━━━━━━━━━━╮\n🌟<blockquote><b>✨{topic_text}</b></blockquote>\n╰━━━━━━━━━━━╯\n"
     f"<b>🖼️ IMAGE ID :</b> {str(count).zfill(3)}\n\n"
     f"<b>📄 Title:</b> {clean_title} \n\n"
     f"<b>🔖 Batch:</b> `{b_name}`\n\n"
@@ -1412,6 +1412,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
