@@ -710,7 +710,7 @@ async def txt_handler(bot: Client, m: Message):
             url = "https://" + Vxy
             link0 = "https://" + Vxy
             
-            name1 = links[i][0].replace("(", "[").replace(")", "]").replace("_", "").replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
+            name1 = links[i][0].replace("(", "[").replace(")", "]").replace("_", "").replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").strip()
             raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
             # (A) Detect topic from ||   →  Example: Physics || Laws
             if "||" in raw_title:
@@ -859,7 +859,7 @@ async def txt_handler(bot: Client, m: Message):
     f"╭━━━━━━━━━━━╮\n<b>🎥 VIDEO ID:</b> {str(count).zfill(3)}.\n╰━━━━━━━━━━━╯\n"
     f"<b>📄 Title: {clean_title}</b> ({res}) ᴍʀꜱᴛʀᴀɴɢᴇʀ™.mkv\n\n"
     f"<b>🔖 Batch:</b> `{b_name}`\n\n"
-    f"<b>📥 Extracted By:</b> {CR}"
+    f"<b>📥 Extracted By:</b> "
     f"<a href=\"https://t.me/delhipolice_yakeenbatch\">{CR}</a>"
 )
                 cc1 = (
@@ -1412,6 +1412,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
