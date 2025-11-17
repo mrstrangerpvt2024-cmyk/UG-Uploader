@@ -888,92 +888,18 @@ async def txt_handler(bot: Client, m: Message):
                     f"[🌐]Html Id : {str(count).zfill(3)}\n"
                     f"**Html Title :** `{name1}.html`\n"
                     f"<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n"
-                    f"**Extracted by➤** {CR}\n"
-                )
+                    f"**Extracted by➤** {CR}\n")
                 
-# NOTE: YAHI PAR try block END HOTA HAI
-    except Exception as e:
-        await m.reply_text(f"Caption error: {e}")
-        continue   # allowed, kyunki loop ke andar ho
-        
-# -----------------------------------------
-#  Try/Except YAHI CLOSE HUA
-# -----------------------------------------
-
-# Ab safe hai:
-if "drive" in url:
-        try:
-            ka = await helper.download(url, name)
-            copy = await bot.send_document(chat_id=channel_id, document=ka, caption=cc1)
-            count += 1
-            os.remove(ka)
-        except FloodWait as e:
-            await m.reply_text(str(e))
-            time.sleep(e.x)
-            continue
-
-    elif ".pdf" in url:
-
-        if "cwmediabkt99" in url:
-            max_retries = 3
-            retry_delay = 4
-            failure_msgs = []
-
-            for attempt in range(max_retries):
-                try:
-                    await asyncio.sleep(retry_delay)
-                    url = url.replace(" ", "%20")
-                    scraper = cloudscraper.create_scraper()
-                    response = scraper.get(url)
-
-                    if response.status_code == 200:
-                        with open(f"{name}.pdf", "wb") as file:
-                            file.write(response.content)
-
-                        await asyncio.sleep(retry_delay)
-                        copy = await bot.send_document(
-                            chat_id=channel_id, document=f"{name}.pdf", caption=cc1
-                        )
-                        count += 1
-                        os.remove(f"{name}.pdf")
-                        break
-
-                    else:
-                        msg = await m.reply_text(
-                            f"Attempt {attempt+1}/{max_retries} failed: {response.status_code}"
-                        )
-                        failure_msgs.append(msg)
-
-                except Exception as e:
-                    msg = await m.reply_text(
-                        f"Attempt {attempt+1}/{max_retries} failed: {e}"
-                    )
-                    failure_msgs.append(msg)
-                    await asyncio.sleep(retry_delay)
-                    continue
-
-            for msg in failure_msgs:
-                await msg.delete()
-
-    else:
-        try:
-            cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
-            download_cmd = f"{cmd} -R 25 --fragment-retries 25"
-            os.system(download_cmd)
-
-            copy = await bot.send_document(
-                chat_id=channel_id,
-                document=f"{name}.pdf",
-                caption=cc1
-            )
-
-            count += 1
-            os.remove(f"{name}.pdf")
-
-        except FloodWait as e:
-            await m.reply_text(str(e))
-            time.sleep(e.x)
-            continue   # ✔ correct    
+                if "drive" in url:
+                    try:
+                        ka = await helper.download(url, name)
+                        copy = await bot.send_document(chat_id=channel_id,document=ka, caption=cc1)
+                        count+=1
+                        os.remove(ka)
+                    except FloodWait as e:
+                        await m.reply_text(str(e))
+                        time.sleep(e.x)
+                        continue
                     
                 elif 'encrypted.m' in url:    
                     Show = f"<i><b>Video APPX Encrypted Downloading</b></i>\n<blockquote><b>{str(count).zfill(3)}) {name1}</b></blockquote>"
@@ -1409,6 +1335,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
