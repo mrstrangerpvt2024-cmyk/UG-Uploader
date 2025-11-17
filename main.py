@@ -892,7 +892,6 @@ async def txt_handler(bot: Client, m: Message):
                 )
                 
 # NOTE: YAHI PAR try block END HOTA HAI
-    
     except Exception as e:
         await m.reply_text(f"Caption error: {e}")
         continue   # allowed, kyunki loop ke andar ho
@@ -1410,6 +1409,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
