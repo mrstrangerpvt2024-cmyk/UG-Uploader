@@ -890,7 +890,7 @@ async def txt_handler(bot: Client, m: Message):
                     f"<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n"
                     f"**Extracted by➤** {CR}\n"
                 )
-                except Exception as e:
+            except Exception as e:
                     await m.reply_text(f"Caption error: {e}")
                     continue
                     
@@ -1406,6 +1406,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
