@@ -713,17 +713,12 @@ async def txt_handler(bot: Client, m: Message):
             name1 = links[i][0].replace("(", "[").replace(")", "]").replace("_", "").replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").strip()
             name1 = re.sub(r'http\S+', '', name1).strip()
             raw_title = name1.strip().replace("\n", " ").replace("  ", " ")
-            # (A) Detect topic from ||   →  Example: Physics || Laws
-            if "||" in raw_title:
-                parts = raw_title.split("||", 1)
-                topic_text = parts[0].strip()
-                clean_title = parts[1].strip()
-            # (B) Detect topic from ( )  →  Example: Pressure (दाब)
+            # (A) Detect topic from ( )  →  Example: Pressure (दाब)
             elif re.search(r"\((.*?)\)", raw_title):
                 topic_match = re.search(r"\((.*?)\)", raw_title)
                 topic_text = topic_match.group(1).strip()
                 clean_title = re.sub(r"\(.*?\)", "", raw_title).strip()
-            # (C) Detect topic from [ ]  → Example: Physics [Basics]
+            # (B) Detect topic from [ ]  → Example: Physics [Basics]
             elif re.search(r"\[(.*?)\]", raw_title):
                 topic_match = re.search(r"\[(.*?)\]", raw_title)
                 topic_text = topic_match.group(1).strip()
@@ -858,14 +853,14 @@ async def txt_handler(bot: Client, m: Message):
             try:
                 cc = (
     f"╭━━━━━━━━━━━╮\n<b>🎥 VIDEO ID:</b> {str(count).zfill(3)}.\n╰━━━━━━━━━━━╯\n"
-    f"<b>📄 Title: {clean_title}</b> ({res}) ᴍʀꜱᴛʀᴀɴɢᴇʀ™.mkv\n\n"
+    f"<b>📄 Title: {name1}</b> ({res}) ᴍʀꜱᴛʀᴀɴɢᴇʀ™.mkv\n\n"
     f"<b>🔖 Batch:</b> `{b_name}`\n\n"
     f"<b>📥 Extracted By:</b> "
     f"<b><a href=\"https://t.me/delhipolice_yakeenbatch\">{CR}</a></b>"
 )
                 cc1 = (
     f"╭━━━━━━━━━━━╮\n<b>📁 FILE ID:</b> {str(count).zfill(3)}\n╰━━━━━━━━━━━╯\n"
-    f"<b>📄 Title:</b> {clean_title} \n\n"
+    f"<b>📄 Title:</b> {name1} \n\n"
     f"<b>🔖 Batch:</b> `{b_name}`\n\n"
     f"<b>📥 Extracted By:</b> "
     f"<b><a href=\"https://t.me/delhipolice_yakeenbatch\">{CR}</a></b>"
@@ -873,13 +868,13 @@ async def txt_handler(bot: Client, m: Message):
                 cczip = f'╭━━━━━━━━━━━╮\n<b>📁 FILE ID:</b> {str(count).zfill(3)}\n╰━━━━━━━━━━━╯\n<b>📄 Title:</b> {clean_title} \n\n<b>🔖 Batch:</b> `{b_name}`\n\n"<b>📥 Extracted By:</b> {CR}' 
                 ccimg = (
     f"╭━━━━━━━━━━━╮\n<b>🖼️ IMAGE ID:</b> {str(count).zfill(3)}\n╰━━━━━━━━━━━╯\n"
-    f"<b>📄 Title:</b> {clean_title} \n\n"
+    f"<b>📄 Title:</b> {name1} \n\n"
     f"<b>🔖 Batch:</b> `{b_name}`\n\n"
     f"<b>📥 Extracted By:</b> "
     f"<b><a href=\"https://t.me/delhipolice_yakeenbatch\">{CR}</a><b>"
 )
-                ccm = f'🎵AUDIO ID : {str(count).zfill(3)}\n**Audio Title :** `{clean_title} .mp3`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n'
-                cchtml = f'🌐HTML ID : {str(count).zfill(3)}\n**Html Title :** `{clean_title} .html`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n'
+                ccm = f'🎵AUDIO ID : {str(count).zfill(3)}\n**Audio Title :** `{name1} .mp3`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n'
+                cchtml = f'🌐HTML ID : {str(count).zfill(3)}\n**Html Title :** `{name1} .html`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n'
                   
                 if "drive" in url:
                     try:
@@ -1413,6 +1408,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
