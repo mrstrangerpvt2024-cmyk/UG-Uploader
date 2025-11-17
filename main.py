@@ -860,22 +860,22 @@ async def txt_handler(bot: Client, m: Message):
     f"<b>📄 Title: {clean_title}</b> ({res}) ᴍʀꜱᴛʀᴀɴɢᴇʀ™.mkv\n\n"
     f"<b>🔖 Batch:</b> `{b_name}`\n\n"
     f"<b>📥 Extracted By:</b> "
-    f"<a href=\"https://t.me/delhipolice_yakeenbatch\">{CR}</a>"
+    f"<b><a href=\"https://t.me/delhipolice_yakeenbatch\">{CR}</a></b>"
 )
                 cc1 = (
     f"╭━━━━━━━━━━━╮\n<b>📁 FILE ID:</b> {str(count).zfill(3)}\n╰━━━━━━━━━━━╯\n"
     f"<b>📄 Title:</b> {clean_title} \n\n"
     f"<b>🔖 Batch:</b> `{b_name}`\n\n"
-    f"<b>📥 Extracted By:</b> {CR}"
-    f"<a href=\"https://t.me/delhipolice_yakeenbatch\">{CR}</a>"
+    f"<b>📥 Extracted By:</b> "
+    f"<b><a href=\"https://t.me/delhipolice_yakeenbatch\">{CR}</a></b>"
 )
                 cczip = f'╭━━━━━━━━━━━╮\n<b>📁 FILE ID:</b> {str(count).zfill(3)}\n╰━━━━━━━━━━━╯\n<b>📄 Title:</b> {clean_title} \n\n<b>🔖 Batch:</b> `{b_name}`\n\n"<b>📥 Extracted By:</b> {CR}' 
                 ccimg = (
     f"╭━━━━━━━━━━━╮\n<b>🖼️ IMAGE ID:</b> {str(count).zfill(3)}\n╰━━━━━━━━━━━╯\n"
     f"<b>📄 Title:</b> {clean_title} \n\n"
     f"<b>🔖 Batch:</b> `{b_name}`\n\n"
-    f"<b>📥 Extracted By:</b> {CR}"
-    f"<a href=\"https://t.me/delhipolice_yakeenbatch\">{CR}</a>"
+    f"<b>📥 Extracted By:</b> "
+    f"<b><a href=\"https://t.me/delhipolice_yakeenbatch\">{CR}</a><b>"
 )
                 ccm = f'🎵AUDIO ID : {str(count).zfill(3)}\n**Audio Title :** `{clean_title} .mp3`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n'
                 cchtml = f'🌐HTML ID : {str(count).zfill(3)}\n**Html Title :** `{clean_title} .html`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n'
@@ -1412,6 +1412,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
