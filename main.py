@@ -856,28 +856,29 @@ async def txt_handler(bot: Client, m: Message):
 
             try:
                 cc = (
-    f"<blockquote><b>{topic_text}</b></blockquote>\n\n"
-    f"<b>🏷️ Iɴᴅᴇx ID  :</b> {str(count).zfill(3)}\n\n"
-    f"<b>🎞️  Tɪᴛʟᴇ :</b> {name1} \n\n"
-    f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
-    f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
+    f"╭━━━━━━━━━━━╮\n<blockquote><b>🗂️{topic_text}</b></blockquote>\n╰━━━━━━━━━━━╯\n\n"
+    f"<b>🎥 VIDEO ID :<b>{str(count).zfill(3)}.\n\n"
+    f"<b>📄 Title : {name1}<b> ({res}) ᴍʀꜱᴛʀᴀɴɢᴇʀ™.mkv\n\n"
+    f"<b>🔖 Batch :<b> `{b_name}`\n\n"
+    f"<b>📥 Extracted By :<b> {CR}"
 )
                 cc1 = (
-    f"<blockquote><b>{topic_text}</b></blockquote>\n\n"
-    f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
-    f"<b>📑  Tɪᴛʟᴇ :</b> {name1} \n\n"
-    f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
-    f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
+    f"╭━━━━━━━━━━━╮\n<blockquote><b>🗂️{topic_text}</b></blockquote>\n╰━━━━━━━━━━━╯\n\n"
+    f"<b>📑 FILE ID :</b> {str(count).zfill(3)}\n\n"
+    f"<b>📄 Title :</b> {name1} \n\n"
+    f"<b>🔖 Batch :<b> `{b_name}`\n\n"
+    f"<b>📥 Extracted By :<b> {CR}"
 )
-                cczip = f'[📁]Zip Id : {str(count).zfill(3)}\n**Zip Title :** `{name1} .zip`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n' 
+                cczip = f'╭━━━━━━━━━━━╮\n<blockquote><b>🗂️{topic_text}</b></blockquote>\n╰━━━━━━━━━━━╯\n\n<b>📑 FILE ID :</b> {str(count).zfill(3)}\n\n<b>📄 Title :</b> {name1} \n\n<b>🔖 Batch :<b> `{b_name}`\n\n"<b>📥 Extracted By :<b> {CR}' 
                 ccimg = (
-    f"<b>🏷️ Iɴᴅᴇx ID <b>: {str(count).zfill(3)} \n\n"
-    f"<b>🖼️  Tɪᴛʟᴇ</b> : {name1} \n\n"
-    f"<blockquote>📚  𝗕ᴀᴛᴄʜ : {b_name}</blockquote>"
-    f"\n\n<b>🎓  Uᴘʟᴏᴀᴅ Bʏ : {CR}</b>"
+    f"╭━━━━━━━━━━━╮\n<blockquote><b>🗂️{topic_text}</b></blockquote>\n╰━━━━━━━━━━━╯\n\n"
+    f"<b>🖼️ IMAGE ID :</b> {str(count).zfill(3)}\n\n"
+    f"<b>📄 Title :</b> {name1} \n\n"
+    f"<b>🔖 Batch :<b> `{b_name}`\n\n"
+    f"<b>📥 Extracted By :<b> {CR}"
 )
-                ccm = f'[🎵]Audio Id : {str(count).zfill(3)}\n**Audio Title :** `{name1} .mp3`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n'
-                cchtml = f'[🌐]Html Id : {str(count).zfill(3)}\n**Html Title :** `{name1} .html`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n'
+                ccm = f'🎵AUDIO ID : {str(count).zfill(3)}\n**Audio Title :** `{name1} .mp3`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n'
+                cchtml = f'🌐HTML ID : {str(count).zfill(3)}\n**Html Title :** `{name1} .html`\n<blockquote><b>Batch Name :</b> {b_name}</blockquote>\n\n**Extracted by➤**{CR}\n'
                   
                 if "drive" in url:
                     try:
@@ -1411,6 +1412,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
