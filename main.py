@@ -860,7 +860,7 @@ async def txt_handler(bot: Client, m: Message):
     f"<b>📄 Title: {clean_title}</b> ({res}) ᴍʀꜱᴛʀᴀɴɢᴇʀ™.mkv\n\n"
     f"<b>🔖 Batch:</b> `{b_name}`\n\n"
     f"<b>📥 Extracted By:</b> {CR}"
-    f"<a href=\"https://t.me/delhipolice_yakeenbatch}\">{CR}</a>"
+    f"<a href=\"https://t.me/delhipolice_yakeenbatch\">{CR}</a>"
 )
                 cc1 = (
     f"╭━━━━━━━━━━━╮\n<b>📁 FILE ID:</b> {str(count).zfill(3)}\n╰━━━━━━━━━━━╯\n"
@@ -1412,6 +1412,7 @@ if __name__ == "__main__":
     notify_owner() 
 
 bot.run()
+
 
 
 
